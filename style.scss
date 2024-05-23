@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
+    gap: 2rem;
+    background-color: #002026;
+
+    .emoji {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        display: flex;
+        position: relative;
+        cursor: pointer;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+        input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+    
+        &:has(> input:checked) {
+            outline: 20px solid white;
+    
+            .container {
+                transform: translateX(0);
+            }
+        }
+    
+        &:not(:has(> input:checked)) {
+            opacity: 50%;
+        }
+    
+        .container {
+            pointer-events: none;
+            position: relative;
+            width: 100%;
+            transform: translateX(15px);
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            .eyes {
+                position: absolute;
+                display: flex;
+                width: 100%;
+                bottom: 25%;
+                justify-content: space-around;
+                .eyes-container {
+                    position: relative;
+                    width: 25px;
+                    height: 25px;
+                    display: flex;
+                    span {
+                        animation: clignottement forwards 1.5s linear infinite;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        background: #002026;
+                    }
+                }
+            }
+    
+            .mouth {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 75%) rotate(-45deg);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 10px solid #002026;
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+            }
+        }
+    
+        &:nth-child(1) .container .eyes, &:nth-child(1) .container .mouth {
+            bottom: 20%;
+        }
+    
+        &:nth-child(2) .container .eyes, &:nth-child(2) .container .mouth {
+            bottom: 30%;
+        }
+    
+        &:nth-child(3) .container .eyes, &:nth-child(3) .container .mouth {
+            bottom: 40%;
+        }
+    
+        &:nth-child(3) .container .mouth {
+            border-radius: 0;
+            transform: translate(-50%, 75%) rotate(0);
+            border: none;
+            background-color: #002026;
+            height: 10px;
+        }
+    
+        &:nth-child(4) .container .eyes, &:nth-child(4) .container .mouth {
+            bottom: 50%;
+        }
+    
+        &:nth-child(4) .container .mouth {
+            border-bottom-color: #002026;
+            border-left-color: #002026;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            transform: translate(-50%, 50%) rotate(-45deg);
+        }
+    
+        &:nth-child(5) .container .eyes, &:nth-child(5) .container .mouth {
+            bottom: 60%;
+        }
+    
+        &:nth-child(5) .container .mouth {
+            border-radius: 0 0 40px 40px;
+            transform: translate(-50%, 100%) rotate(0);
+            border: none;
+            background-color: #002026;
+            height: 20px;
+        }
+    
+        &:hover .container {
+            transform: translateX(0);
+        }
+    }
+    
+    .emoji:nth-child(1) {
+        background: linear-gradient(56deg, #ff0000 0%, rgba(255,156,0,1) 100%);
+    }
+    
+    .emoji:nth-child(2) {
+        background: linear-gradient(56deg, #ff5427 0%, #ffb055 100%);
+    }
+    
+    .emoji:nth-child(3) {
+        background: linear-gradient(56deg, #ffa93d 0%, #ffd684 100%);
+    }
+    
+    .emoji:nth-child(4) {
+        background: linear-gradient(56deg, #ffc528 0%, #ffe354 100%);
+    }
+    
+    .emoji:nth-child(5) {
+        background: linear-gradient(56deg, #ffe732 0%, #fff36a 100%);
+    }
+    
+    .emoji:nth-child(1) .eyes .eyes-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -150%) rotate(10deg);
+        width: 35px;
+        height: 12px;
+        background: #002026;
+    }
+    
+    .emoji:nth-child(1) .eyes {
+        .eyes-container:nth-child(2) {
+            transform: scale(-1, 1);
+        }
+    }
+}
+
+
+@keyframes clignottement {
+    0% {
+        transform: scale(100%);
+    } 3% {
+        transform: scaleY(0%);
+    } 10% {
+        transform: scale(100%);
+    }
+}
